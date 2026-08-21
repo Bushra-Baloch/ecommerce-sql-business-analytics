@@ -58,3 +58,17 @@ CREATE TABLE order_items (
     FOREIGN KEY (product_id)
         REFERENCES products(product_id)
 );
+
+
+-- 6. Payments table
+CREATE TABLE payments (
+    payment_id SERIAL PRIMARY KEY,
+    order_id INT NOT NULL,
+    payment_date DATE NOT NULL,
+    payment_method VARCHAR(30) NOT NULL,
+    payment_status VARCHAR(30) NOT NULL DEFAULT 'Pending',
+    amount DECIMAL(10, 2) NOT NULL,
+
+    FOREIGN KEY (order_id)
+        REFERENCES orders(order_id)
+);
