@@ -72,3 +72,20 @@ CREATE TABLE payments (
     FOREIGN KEY (order_id)
         REFERENCES orders(order_id)
 );
+
+
+-- 7. Reviews table
+CREATE TABLE reviews (
+    review_id SERIAL PRIMARY KEY,
+    customer_id INT NOT NULL,
+    product_id INT NOT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    review_text TEXT,
+    review_date DATE NOT NULL,
+
+    FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    FOREIGN KEY (product_id)
+        REFERENCES products(product_id)
+);
