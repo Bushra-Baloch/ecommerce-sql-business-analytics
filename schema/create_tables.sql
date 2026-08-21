@@ -13,3 +13,10 @@ CREATE TABLE customers (
     country VARCHAR(50),
     signup_date DATE NOT NULL
 );
+
+
+-- 2. Categories table
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    category_name VARCHAR(100) UNIQUE NOT NULL
+);
