@@ -30,3 +30,15 @@ CREATE TABLE products (
     stock_quantity INT NOT NULL DEFAULT 0,
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
+
+
+-- 4. Orders table
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    customer_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    status VARCHAR(30) NOT NULL DEFAULT 'Pending',
+
+    FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id)
+);
